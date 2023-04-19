@@ -5,4 +5,9 @@ if ! gem list foreman -i --silent; then
   gem install foreman
 fi
 
+# Run npm build command
+exec npm run build &
+
+# Start web and worker processes with Foreman
 exec foreman start -f Procfile.dev "$@"
+

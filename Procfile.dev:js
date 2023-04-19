@@ -1,0 +1,3 @@
+web: npm run build && node server.js
+worker: npm run worker
+
