@@ -6,19 +6,19 @@ import getGreetings from './redux/greeting/greeting-api';
 import { Provider } from 'react-redux';
 import store from './store';
 
-const App = () => {
+const Greeting = () => {
   const dispatch = useDispatch();
   const greetingState = useSelector((state) => state)
 
   useEffect(() => {
     dispatch(getGreetings())
   }, [])
-  return (<h1>Greet: {greetingState.greeting} </h1>);
+  return (<h1>{greetingState.greeting} </h1>);
 }
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Greeting />
   </Provider>,
   document.getElementById('root'),
 );
