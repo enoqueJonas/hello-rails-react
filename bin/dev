@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+if ! gem list foreman -i --silent; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Run npm build command
+exec npm run build 
+
+# Start web and worker processes with Foreman
+exec foreman start -f Procfile.dev "$@"
+
