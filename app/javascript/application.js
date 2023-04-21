@@ -1,13 +1,24 @@
 //= require_tree .
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import App from "./app";
+import { useDispatch, useSelector } from 'react-redux';
+import getGreetings from './redux/greeting/greeting-api';
+import { Provider } from 'react-redux';
+import store from './store';
 
-// function App() {
-//   return (<h1>Hello World!</h1>);
-// }
+const App = () => {
+  const dispatch = useDispatch();
+  const greetingState = useSelector((state) => state)
+
+  useEffect(() => {
+    dispatch(getGreetings())
+  }, [])
+  return (<h1>Greet: {greetingState.greeting} </h1>);
+}
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
