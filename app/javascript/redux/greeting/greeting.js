@@ -7,7 +7,6 @@ function greetingReducer(state = initialState, action) {
     const {type, payload} = action
     switch (type) {
         case `${GREETINGS_RETRIEVED}/fulfilled`:
-            console.log('payload')
             return { ...state, greeting: payload };
         default:
             return state;

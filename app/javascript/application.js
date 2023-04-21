@@ -1,24 +1,16 @@
 //= require_tree .
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import getGreetings from './redux/greeting/greeting-api';
 import { Provider } from 'react-redux';
 import store from './store';
-
-const Greeting = () => {
-  const dispatch = useDispatch();
-  const greetingState = useSelector((state) => state)
-
-  useEffect(() => {
-    dispatch(getGreetings())
-  }, [])
-  return (<h1>{greetingState.greeting} </h1>);
-}
+import App from './app';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Greeting />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );
